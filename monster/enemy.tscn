@@ -19,7 +19,7 @@ animations = [{
 
 [node name="Node" type="Node2D"]
 
-[node name="enemy" type="CharacterBody2D" parent="." groups=["sentients"]]
+[node name="enemy" type="CharacterBody2D" parent="."]
 script = ExtResource("1_rg1we")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
