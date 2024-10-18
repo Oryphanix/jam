@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpakxo81q0su"]
+
+[ext_resource type="Script" path="res://monster/enemy.gd" id="1_rg1we"]
+[ext_resource type="Texture2D" uid="uid://cj8dnp2v42tj7" path="res://monster/Screenshot 2024-08-12 170945.png" id="2_1t4wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu6n3"]
+size = Vector2(26.5, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tx3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1t4wk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node" type="Node2D"]
+
+[node name="enemy" type="CharacterBody2D" parent="." groups=["sentients"]]
+script = ExtResource("1_rg1we")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(0.75, 0)
+shape = SubResource("RectangleShape2D_fu6n3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.119863, 0.102018)
+sprite_frames = SubResource("SpriteFrames_0tx3f")
