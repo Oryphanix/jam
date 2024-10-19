@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvxexea4tyiq0"]
-
-[ext_resource type="Script" path="res://player/jump.gd" id="1_k4ct0"]
-
-[node name="Jump" type="Node"]
-script = ExtResource("1_k4ct0")
-jump_velocity = null
