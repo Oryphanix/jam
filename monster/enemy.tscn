@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpakxo81q0su"]
+[gd_scene load_steps=6 format=3 uid="uid://bpakxo81q0su"]
 
 [ext_resource type="Script" path="res://monster/enemy.gd" id="1_rg1we"]
 [ext_resource type="Texture2D" uid="uid://cj8dnp2v42tj7" path="res://monster/Screenshot 2024-08-12 170945.png" id="2_1t4wk"]
+[ext_resource type="Script" path="res://scripts/States/state_machine.gd" id="3_tgi4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu6n3"]
 size = Vector2(26, 22)
@@ -29,3 +30,6 @@ shape = SubResource("RectangleShape2D_fu6n3")
 position = Vector2(0, -9.53674e-07)
 scale = Vector2(0.119863, 0.102018)
 sprite_frames = SubResource("SpriteFrames_0tx3f")
+
+[node name="StateMachine" type="Node" parent="enemy"]
+script = ExtResource("3_tgi4v")
