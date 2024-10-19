@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://20udwjhfvlln"]
+[gd_scene load_steps=5 format=4 uid="uid://20udwjhfvlln"]
 
 [ext_resource type="TileSet" uid="uid://ckt3cxeu5d5gi" path="res://world/new_tile_set.tres" id="1_3ilp7"]
 [ext_resource type="Script" path="res://world/area_2d.gd" id="2_47jon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6iq8v"]
 size = Vector2(191.5, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgwn2"]
+size = Vector2(193, 82)
 
 [node name="World" type="Node2D"]
 
@@ -18,3 +21,9 @@ script = ExtResource("2_47jon")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(112.25, -40.5)
 shape = SubResource("RectangleShape2D_6iq8v")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(335.5, -41)
+shape = SubResource("RectangleShape2D_lgwn2")
