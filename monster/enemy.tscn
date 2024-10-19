@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpakxo81q0su"]
+[gd_scene load_steps=9 format=3 uid="uid://bpakxo81q0su"]
 
 [ext_resource type="Script" path="res://monster/enemy.gd" id="1_rg1we"]
 [ext_resource type="Texture2D" uid="uid://cj8dnp2v42tj7" path="res://monster/Screenshot 2024-08-12 170945.png" id="2_1t4wk"]
-[ext_resource type="Script" path="res://scripts/States/state_machine.gd" id="3_tgi4v"]
+[ext_resource type="Script" path="res://monster/States/state_machine.gd" id="3_tgi4v"]
+[ext_resource type="Script" path="res://monster/States/follow.gd" id="4_6qnga"]
+[ext_resource type="Script" path="res://monster/States/lurking.gd" id="4_s5aqr"]
+[ext_resource type="Script" path="res://monster/States/chasing.gd" id="6_jbkc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu6n3"]
 size = Vector2(26, 22)
@@ -31,5 +34,19 @@ position = Vector2(0, -9.53674e-07)
 scale = Vector2(0.119863, 0.102018)
 sprite_frames = SubResource("SpriteFrames_0tx3f")
 
-[node name="StateMachine" type="Node" parent="enemy"]
+[node name="StateMachine" type="Node" parent="enemy" node_paths=PackedStringArray("initialState", "enemy")]
 script = ExtResource("3_tgi4v")
+initialState = NodePath("Lurking")
+enemy = NodePath("..")
+
+[node name="Lurking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_s5aqr")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_6qnga")
+enemy = NodePath("../..")
+minDistance = 251
+
+[node name="Chasing" type="Node" parent="enemy/StateMachine"]
+script = ExtResource("6_jbkc5")
