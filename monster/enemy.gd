@@ -1,8 +1,11 @@
 class_name enemy extends CharacterBody2D
-@export var AGGRO: int = 0
+@export var AGGRO: int
 @export var SPEED = 300.0
+
 var playerPosition: Vector2
 var enemyPosition: Vector2
+
+
 func _physics_process(delta: float):
 	playerPosition = Global.playerPosition
 	Global.enemyPosition = self.global_position
@@ -12,9 +15,6 @@ func _physics_process(delta: float):
 		velocity += get_gravity() * delta
 	var directionToPlayer = (enemyPosition).direction_to(playerPosition)
 	var distanceToPlayer = ((enemyPosition)*delta-(playerPosition*delta)).length()
-	print("enemypos", enemyPosition)
-	print("player pos", playerPosition)
-	print(distanceToPlayer)
 	#Checks and Determines behaviour on var, "AGGRO"
 	if  0 <= AGGRO and AGGRO <= 30:
 		if distanceToPlayer > 100:
