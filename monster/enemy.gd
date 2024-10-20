@@ -6,7 +6,6 @@ var enemyPosition: Vector2
 
 func _process(_delta: float):
 	Global.enemyPosition = self.global_position
-
 func _physics_process(delta: float):
 	# Add the gravity.
 	if not is_on_floor():

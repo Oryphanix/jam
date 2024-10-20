@@ -13,8 +13,6 @@ var player: CharacterBody2D
 
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
-	if Global.sanity <= Global.sanity/3:
-		Transitioned.emit(self, "chasing")
 	print("entered stalk")
 	
 func Physics_Update(_delta: float):
@@ -32,7 +30,10 @@ func Physics_Update(_delta: float):
 
 func Update(_delta: float):
 	var playerDir  = Global.playerPosition.direction_to(Global.enemyPosition)
-
+	
+	if Global.sanity <= Global.sanity/3:
+		Transitioned.emit(self, "chasing")
+		
 	if playerDir.dot(Global.playerFace) > 0:
 		playerFacing = true
 	else:

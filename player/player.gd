@@ -45,5 +45,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	$AnimatedSprite2D.play("default")
 	#Add sanity here using, please update Global.sanity 
 	pass
