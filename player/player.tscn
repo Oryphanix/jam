@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_dee56"]
 [ext_resource type="Texture2D" uid="uid://b7okyhytlhpsh" path="res://art/Idle_animation_sprite_sheet_27x82.png" id="2_6rwlf"]
-[ext_resource type="Texture2D" uid="uid://cfyu2i6ii7ess" path="res://walking_animation_sprite_sheet_400x656.png" id="2_lukfq"]
+[ext_resource type="Texture2D" uid="uid://cfyu2i6ii7ess" path="res://art/walking_animation_sprite_sheet_400x656.png" id="2_lukfq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7ix4"]
 atlas = ExtResource("2_lukfq")
@@ -235,12 +235,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w887o"]
-size = Vector2(22.5, 73)
+size = Vector2(19, 71)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
 
-[node name="player" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D" parent="." groups=["Player"]]
 script = ExtResource("1_dee56")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
@@ -251,5 +251,5 @@ frame = 14
 frame_progress = 0.55263
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(-0.25, -0.5)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_w887o")

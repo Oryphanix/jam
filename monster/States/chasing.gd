@@ -3,7 +3,7 @@ extends State
 class_name EnemyChasing
 
 @export var enemy: CharacterBody2D
-@export var moveSpeed := 220
+@export var moveSpeed: float
 
 var player: CharacterBody2D
 
@@ -16,6 +16,7 @@ func Update(_delta: float):
 	pass
 	
 func Physics_Update(_delta: float):
+	moveSpeed = 1.1*Global.playerSpeed
 	#Vars for distance to player
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()

@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var argument = false
 
 
-
 const JUMP_VELOCITY = -400.0
 
 #Variable for globalisation of player position
@@ -42,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	move_and_slide()
 	Global.playerPosition = self.global_position
+	Global.playerSpeed = SPEED
 
 
 func _process(delta: float) -> void:
