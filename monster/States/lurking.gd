@@ -13,7 +13,7 @@ func Enter():
 	print("lurking")
 	
 func Update(_delta: float):
-	if Global.sanity <= 70 and Global.sanity > 30:
+	if Global.sanity <= (2*Global.sanity)/3 and Global.sanity > (Global.sanity)/3:
 		Transitioned.emit(self, "stalking") 
 	
 func Physics_Update(_delta: float):
