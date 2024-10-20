@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+@export var SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 #Variable for globalisation of player position
 var playerPosition: Vector2
 var sanity: float
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	#Sets the global player position to the position
 	Global.playerPosition = self.global_position
 	# Add the gravity.

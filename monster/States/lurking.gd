@@ -13,13 +13,17 @@ func Enter():
 	print("lurking")
 	
 func Update(_delta: float):
-	pass
+	if Global.sanity <= 70 and Global.sanity > 30:
+		Transitioned.emit(self, "stalking") 
 	
 func Physics_Update(_delta: float):
+	#Vars for distance to player
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
+	#Makes the enemy move towards the player but make it stop at a distance
 	if distance >= minDistance + bufferZone:
 		enemy.velocity = (direction.normalized() * moveSpeed)
+	#Make it run away if the player gets to close
 	elif distance < minDistance - bufferZone:
 		enemy.velocity = -(direction.normalized() * moveAway)
 	else:
