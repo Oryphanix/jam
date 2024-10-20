@@ -28,3 +28,4 @@ func Physics_Update(_delta: float):
 	else:
 		enemy.velocity = Vector2.ZERO
 	enemy.move_and_slide()
+	
