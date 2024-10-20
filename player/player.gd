@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@export var runSpeed := 400
 @export var SPEED = 200.0
 @export var argument = false
+
+
 
 const JUMP_VELOCITY = -400.0
 
@@ -11,24 +14,24 @@ var sanity: float
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_down") or argument:
-		SPEED = 1100
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * runSpeed
 		else:
 			velocity.x = move_toward(velocity.x, 0, 300)
-		print (SPEED)
+		Global.playerFace = Vector2(direction, 0)
 		move_and_slide()
 		argument = true
 		if Input.is_action_just_released("ui_down"):
 			argument = false
 	else:
-		SPEED = 200
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
 			velocity.x = direction * SPEED
+			Global.playerFace = Vector2(direction, 0)
 		else:
 			velocity.x = move_toward(velocity.x, 0, 200)
+		
 		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
