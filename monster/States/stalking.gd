@@ -1,31 +1,31 @@
 extends State
-class_name EnemyFollow
+class_name EnemyStalk
 
 #PLACEHOLDER BEHAVIOUR
 
 @export var enemy: CharacterBody2D
-@export var moveSpeed := 40
-@export var moveAway := 100
+@export var moveSpeed := 70
+@export var moveAway := 80
 @export var bufferZone := 5.0
-@export var minDistance := 250
+@export var minDistance := 125
 var player: CharacterBody2D
 
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
-	print("entered follow")
+	if Global.sanity <= 30:
+		Transitioned.emit(self, "chasing")
+	print("entered stalk")
 	
 func Physics_Update(_delta: float):
-	#Modify
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
-	if distance < 500 and distance >= minDistance + bufferZone:
+	#Makes the enemy move towards the player but make it stop at a distance
+	if distance >= minDistance + bufferZone:
 		enemy.velocity = (direction.normalized() * moveSpeed)
-	elif distance > 500:
-		print("too far away, wamdering")
-		Transitioned.emit(self, "lurking")
+	#Make it run away if the player gets to close
 	elif distance < minDistance - bufferZone:
 		enemy.velocity = -(direction.normalized() * moveAway)
 	else:
 		enemy.velocity = Vector2.ZERO
 	enemy.move_and_slide()
-	print(enemy.velocity.length())
+	
