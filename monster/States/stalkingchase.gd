@@ -13,5 +13,4 @@ func Enter():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func Physics_Update(_delta: float):
 	var direction = Global.playerPosition - Global.enemyPosition
-	var distance := direction.length()
 	enemy.velocity = (direction.normalized() * moveSpeed)

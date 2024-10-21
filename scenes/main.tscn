@@ -1,16 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbmaocylko183"]
+[gd_scene load_steps=3 format=3 uid="uid://dbmaocylko183"]
 
-[ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="1_nxhj3"]
-[ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="2_g8wcs"]
-[ext_resource type="PackedScene" uid="uid://20udwjhfvlln" path="res://world/world.tscn" id="3_046d8"]
+[ext_resource type="Texture2D" uid="uid://foc3qaqjmdm6" path="res://icon.svg" id="1_e5c07"]
+[ext_resource type="Script" path="res://scenes/mainmenue.gd" id="2_uuqkq"]
 
 [node name="Main" type="Node"]
 
-[node name="Enemy" parent="." instance=ExtResource("2_g8wcs")]
-position = Vector2(697, 35)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577.5, 316.5)
+scale = Vector2(9.02344, 5.00781)
+texture = ExtResource("1_e5c07")
 
-[node name="Player" parent="." instance=ExtResource("1_nxhj3")]
-position = Vector2(132, 35)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -7.0
+offset_top = 577.0
+offset_right = 27.0
+offset_bottom = 613.0
+script = ExtResource("2_uuqkq")
 
-[node name="World" parent="." instance=ExtResource("3_046d8")]
-position = Vector2(-2, 96)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.323529
+anchor_top = -0.916667
+anchor_right = 2.38235
+anchor_bottom = 1.88889
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Control/VBoxContainer/Start" to="Control" method="_on_start_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control" method="_on_quit_pressed"]

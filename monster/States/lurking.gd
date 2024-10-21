@@ -2,8 +2,8 @@ extends State
 class_name EnemyLurking
 
 @export var enemy: CharacterBody2D
-@export var moveSpeed := 40
-@export var moveAway := 100
+@export var moveSpeed: float
+@export var moveAway: float
 @export var bufferZone := 5.0
 @export var minDistance := 250
 var player: CharacterBody2D
@@ -13,10 +13,12 @@ func Enter():
 	print("lurking")
 	
 func Update(_delta: float):
-	if Global.sanity <= (2*Global.sanity)/3 and Global.sanity > (Global.sanity)/3:
+	if Global.sanity <= (2*Global.maxSanity)/3 and Global.sanity > (Global.maxSanity)/3:
 		Transitioned.emit(self, "stalking") 
 	
 func Physics_Update(_delta: float):
+	moveSpeed = Global.playerSpeed/5
+	moveAway = Global.playerSpeed/2
 	#Vars for distance to player
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
