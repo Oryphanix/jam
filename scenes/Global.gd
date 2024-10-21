@@ -5,3 +5,4 @@ var playerFace: Vector2
 var playerSpeed: float
 var sanity: float
 var maxSanity: float
+var playerFOV: float = 167.5

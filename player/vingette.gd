@@ -11,11 +11,15 @@ var argumentNarwhal = false
 @export var runExponential = 1
 @export var narwhalExponential = 1
 @export var time = 0.0
-
 @export var narwhalIncrease = 20.0
 
+func _ready() -> void:
+	Global.maxSanity = sanity
+	Global.sanity = Global.maxSanity
+	sanity = Global.sanity
 
 func _process(delta):
+	sanity = Global.sanity
 	temp = sanity / 13
 	vignette = 255 - temp
 	#using the sanity variable to work out vignette opacity. sanity /13 will ensure vignette opacity is between 0 and 

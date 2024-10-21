@@ -30,7 +30,9 @@ func change_state(state: State, newStateName: String):
 		return
 	var newState = states.get(newStateName.to_lower())
 	if !newState:
-		print("new state empty")
+		print("new state empty", "statename",newStateName)
+		print(states)
+		print("newstate", newState)
 		return
 	#Transitions state
 	if currentState:

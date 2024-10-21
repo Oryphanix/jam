@@ -261,3 +261,6 @@ position = Vector2(87, 17)
 scale = Vector2(1.03735, 1)
 texture = ExtResource("4_8i6og")
 script = ExtResource("5_456t7")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(1.055, 1.055)

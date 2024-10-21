@@ -1,33 +1,42 @@
 extends State
 class_name EnemyLurking
 
-@export var enemy: CharacterBody2D
-@export var moveSpeed: float
-@export var moveAway: float
-@export var bufferZone := 5.0
-@export var minDistance := 250
+@export var en: CharacterBody2D
+@export var sanityLoss := 500
 var player: CharacterBody2D
 
+
+func randCirlePos() -> Vector2:
+	var theta : float = randf() * 2 * PI
+	return Vector2(cos(theta), sin(theta)) * sqrt(randf())
+
+
 func Enter():
-	player = get_tree().get_first_node_in_group("Player")
 	print("lurking")
+	player = get_tree().get_first_node_in_group("Player")
+	var randomPos: Vector2
+	randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition
+	while !(randomPos.y < 160 and randomPos.y > 16):
+		randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition
+	en.global_position = randomPos
+	en.show()
+	print("IF IS CLIPPING UP, REPLACE 16 WITH 16-MONSTER HEIGHT")
+	
 	
 func Update(_delta: float):
-	if Global.sanity <= (2*Global.maxSanity)/3 and Global.sanity > (Global.maxSanity)/3:
-		Transitioned.emit(self, "stalking") 
-	
-func Physics_Update(_delta: float):
-	moveSpeed = Global.playerSpeed/5
-	moveAway = Global.playerSpeed/2
-	#Vars for distance to player
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
-	#Makes the enemy move towards the player but make it stop at a distance
-	if distance >= minDistance + bufferZone:
-		enemy.velocity = (direction.normalized() * moveSpeed)
-	#Make it run away if the player gets to close
-	elif distance < minDistance - bufferZone:
-		enemy.velocity = -(direction.normalized() * moveAway)
-	else:
-		enemy.velocity = Vector2.ZERO
-	enemy.move_and_slide()
+	if Global.sanity <= (2*Global.maxSanity)/3 and Global.sanity > (Global.maxSanity)/3:
+		Transitioned.emit(self, "stalking")
+	if distance > 167.5:
+		Transitioned.emit(self, "prelurking")
+	elif distance < 15:
+		Global.sanity -= sanityLoss
+		Transitioned.emit(self, "prelurking")
+	
+	#Check distance to player
+		#if is more than 167 then set state to pre lurk
+	#if is less than hitbox of monster, decrease sanity set state to prelurk
+	
+func Physics_Update(_delta: float):
+	pass
