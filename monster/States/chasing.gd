@@ -19,5 +19,4 @@ func Physics_Update(_delta: float):
 	moveSpeed = 1.1*Global.playerSpeed
 	#Vars for distance to player
 	var direction = Global.playerPosition - Global.enemyPosition
-	var distance := direction.length()
 	enemy.velocity = (direction.normalized() * moveSpeed)
