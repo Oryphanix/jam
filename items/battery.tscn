@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://2w4xin683x4e"]
+
+[ext_resource type="Texture2D" uid="uid://d0fni5s4ump5d" path="res://art/pixel-art-illustration-battery-pixelated-260nw-2323225505.webp" id="2_elu8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2k1s"]
+size = Vector2(189, 198.5)
+
+[node name="battery" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.500244, 4.00006)
+scale = Vector2(0.734615, 0.721429)
+texture = ExtResource("2_elu8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3.00006)
+shape = SubResource("RectangleShape2D_r2k1s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
