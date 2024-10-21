@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbmaocylko183"]
 
-[ext_resource type="Texture2D" uid="uid://foc3qaqjmdm6" path="res://icon.svg" id="1_e5c07"]
+[ext_resource type="Texture2D" uid="uid://cbelboyegovxr" path="res://icon.svg" id="1_e5c07"]
 [ext_resource type="Script" path="res://scenes/mainmenue.gd" id="2_uuqkq"]
 
 [node name="Main" type="Node"]

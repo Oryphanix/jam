@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://j2munq3004jd"
-path="res://.godot/imported/match striker.jpg-cb2d91c181d9a202b63f9f30adb2b8a8.ctex"
+path="res://.godot/imported/match striker.jpg-c89dade854e17ac27343de2188dd85c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://match striker.jpg"
-dest_files=["res://.godot/imported/match striker.jpg-cb2d91c181d9a202b63f9f30adb2b8a8.ctex"]
+source_file="res://art/match striker.jpg"
+dest_files=["res://.godot/imported/match striker.jpg-c89dade854e17ac27343de2188dd85c4.ctex"]
 
 [params]
 

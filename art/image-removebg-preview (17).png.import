@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0fni5s4ump5d"
-path="res://.godot/imported/pixel-art-illustration-battery-pixelated-260nw-2323225505.webp-c89a5da3512d7a22a37c507e0586b743.ctex"
+uid="uid://cd8tktniaw4t7"
+path="res://.godot/imported/image-removebg-preview (17).png-4324982b0482e77b4b07fc2e1c19a7fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixel-art-illustration-battery-pixelated-260nw-2323225505.webp"
-dest_files=["res://.godot/imported/pixel-art-illustration-battery-pixelated-260nw-2323225505.webp-c89a5da3512d7a22a37c507e0586b743.ctex"]
+source_file="res://art/image-removebg-preview (17).png"
+dest_files=["res://.godot/imported/image-removebg-preview (17).png-4324982b0482e77b4b07fc2e1c19a7fb.ctex"]
 
 [params]
 

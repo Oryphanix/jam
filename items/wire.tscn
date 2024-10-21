@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://hrlyduaonqhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgkbi"]
+size = Vector2(185.5, 129)
+
+[node name="wire" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2174, 988)
+scale = Vector2(0.298013, 0.229055)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2172.75, 987.5)
+shape = SubResource("RectangleShape2D_xgkbi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
