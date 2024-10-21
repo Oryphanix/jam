@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://wdsaa31gtera"]
+
+[ext_resource type="Texture2D" uid="uid://fewayjdb1uxn" path="res://art/match.png" id="2_qwugf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88g1d"]
+size = Vector2(163.5, 142)
+
+[node name="match" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.99988, 12.0983)
+scale = Vector2(0.314176, 0.303456)
+texture = ExtResource("2_qwugf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.75, 10.8483)
+shape = SubResource("RectangleShape2D_88g1d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

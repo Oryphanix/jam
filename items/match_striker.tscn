@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsin7nl75n678"]
+
+[ext_resource type="Texture2D" uid="uid://j2munq3004jd" path="res://art/match striker.jpg" id="2_ablfb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyanu"]
+size = Vector2(184, 140)
+
+[node name="match striker" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, -8.49994)
+scale = Vector2(0.335249, 0.262452)
+texture = ExtResource("2_ablfb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -12)
+shape = SubResource("RectangleShape2D_wyanu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
