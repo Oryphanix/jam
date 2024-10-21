@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 
 		if direction:
 			velocity.x = direction * SPEED
+			Global.playerFace = Vector2(direction, 0)
 		else:
 			velocity.x = move_toward(velocity.x, 0, 300)
 
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
 			velocity.x = direction * SPEED
+			Global.playerFace = Vector2(direction, 0)
 		else:
 			velocity.x = move_toward(velocity.x, 0, 300)
 		#otherwise the character will walk left/right if the shift key is not held
@@ -45,8 +47,11 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	Global.playerPosition = self.global_position
+	Global.playerSpeed = SPEED
 
 	# Get the input direction and handle the movement/deceleration.
 	# ui_left is left arrow, ui_right is right arrow, ui_accept is space bar, ui_shift is the shift key.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$AnimatedSprite2D.play("default")
+	$Camera2D.make_current()
