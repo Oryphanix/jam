@@ -108,17 +108,17 @@ position = Vector2(1716.25, -64)
 shape = SubResource("RectangleShape2D_lldkq")
 
 [node name="Camera2D" type="Camera2D" parent="Room4"]
-position = Vector2(1172, -48)
+position = Vector2(1580, -53)
 offset = Vector2(-0.005, 0)
 zoom = Vector2(3.61, 3.34)
 limit_left = 1421
-limit_top = -63
+limit_top = -23
 limit_right = 1958
 limit_bottom = 58
 limit_smoothed = true
 
 [node name="Player" parent="." instance=ExtResource("3_2k328")]
-position = Vector2(60, -34)
+position = Vector2(83, -53)
 
 [node name="Enemy" parent="." instance=ExtResource("4_57ndh")]
 position = Vector2(1708, -26)
