@@ -9,17 +9,6 @@ const RUN_MAX_SPEED = 400
 
 
 
-extends CharacterBody2D
-
-const ACCELERATION = 900
-const FRICTION = 500
-const MAX_SPEED = 200
-
-const RUNACCELERATION  = 1200
-const RUN_MAX_SPEED = 400
-
-
-
 
 
 func _physics_process(delta):
@@ -78,4 +67,3 @@ func apply_friction(amount) -> void:
 		
 func _process(_delta: float) -> void:
 	$Camera2D.make_current()
-
