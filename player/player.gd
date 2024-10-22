@@ -39,6 +39,19 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, 300)
 		#otherwise the character will walk left/right if the shift key is not held
+		var animation = $AnimatedSprite2D
+		if Input.is_action_just_pressed("move_right") or direction:
+			animation.play("default")
+		elif Input.is_action_just_pressed("move_left") or direction == -1:
+			animation.play("default")
+		else:
+			animation.play("idle")
+		#plays movement or idle animations depending on input
+		if Input.is_action_just_pressed("move_right"):
+			$AnimatedSprite2D.flip_h = false
+		elif Input.is_action_just_pressed("move_left"):
+			$AnimatedSprite2D.flip_h = true
+		#flips sprite
 		move_and_slide()
 		# Add the gravity.
 	if not is_on_floor():
@@ -49,11 +62,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	Global.playerPosition = self.global_position
 	Global.playerSpeed = SPEED
-
 	# Get the input direction and handle the movement/deceleration.
 	# ui_left is left arrow, ui_right is right arrow, ui_accept is space bar, ui_shift is the shift key.
 func _process(_delta: float) -> void:
-	$AnimatedSprite2D.play("default")
 	$Camera2D.make_current()
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
