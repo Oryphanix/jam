@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxl07yi276vcv"]
+
+[ext_resource type="Script" path="res://world/roomcameradetector.gd" id="1_ma80t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iq8v"]
+size = Vector2(1, 96.5)
+
+[node name="Room1" type="Area2D"]
+script = ExtResource("1_ma80t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(604.5, -47.75)
+shape = SubResource("RectangleShape2D_6iq8v")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(209, -80)
+offset = Vector2(-0.005, 0)
+zoom = Vector2(1.875, 1.73)
+limit_left = 1
+limit_top = -83
+limit_right = 658
+limit_bottom = 58
+limit_smoothed = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
