@@ -48,7 +48,7 @@ sprite_frames = SubResource("SpriteFrames_0tx3f")
 
 [node name="StateMachine" type="Node" parent="enemy" node_paths=PackedStringArray("initialState", "enemy")]
 script = ExtResource("3_tgi4v")
-initialState = NodePath("Stalking")
+initialState = NodePath("preLurking")
 enemy = NodePath("..")
 
 [node name="preLurking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]

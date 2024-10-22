@@ -9,8 +9,7 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child 
-			child.Transitioned.connect(change_state)
-	print("a===============================",get_tree_string_pretty())
+	SignalManager.transitioned.connect(change_state)
 	if initialState:
 		initialState.Enter()
 		currentState = initialState

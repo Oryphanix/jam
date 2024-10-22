@@ -20,7 +20,7 @@ func Enter():
 	wait()
 	
 func on_timer_finished():
-	Transitioned.emit(self,"lurking")
+	SignalManager.transitioned.emit(self,"lurking")
 	
 func Exit():
 	delayTimer.stop()

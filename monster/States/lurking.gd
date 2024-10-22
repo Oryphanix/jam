@@ -28,12 +28,12 @@ func Update(_delta: float):
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
 	if Global.sanity <= (2*Global.maxSanity)/3 and Global.sanity > (Global.maxSanity)/3:
-		Transitioned.emit(self, "stalking")
+		SignalManager.transitioned.emit(self, "stalking")
 	if distance > 167.5:
-		Transitioned.emit(self, "prelurking")
+		SignalManager.transitioned.emit(self, "prelurking")
 	elif distance < 15:
 		Global.sanity -= sanityLoss
-		Transitioned.emit(self, "prelurking")
+		SignalManager.transitioned.emit(self, "prelurking")
 	
 	#Check distance to player
 		#if is more than 167 then set state to pre lurk

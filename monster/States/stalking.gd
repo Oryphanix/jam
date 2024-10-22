@@ -24,7 +24,7 @@ func Update(_delta: float):
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
 	if distance < 140:
-		Transitioned.emit(self, "chasing")
+		SignalManager.transitioned.emit(self, "chasing")
 
 
 func _on_body_left_entered(body: Node2D) -> void:
