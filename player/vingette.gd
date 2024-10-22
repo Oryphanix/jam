@@ -1,9 +1,14 @@
 extends Sprite2D
-
+var stopwatch = 0.0
+signal stopWatch
+signal vignetteButRed
+signal sanityValue
+var temp2
 var temp
 var vignette
 var run = false
 var argument = false
+var argument2 = true
 var narwhal = false
 var argumentNarwhal = false
 @export var sanity = 3300.0
@@ -11,23 +16,20 @@ var argumentNarwhal = false
 @export var runExponential = 1
 @export var narwhalExponential = 1
 @export var time = 0.0
-@export var narwhalIncrease = 20.0
 
-func _ready() -> void:
-	Global.maxSanity = sanity
-	Global.sanity = Global.maxSanity
-	sanity = Global.sanity
+@export var narwhalIncrease = 20.0
+signal stun
 
 func _process(delta):
-	sanity = Global.sanity
 	temp = sanity / 13
-	vignette = 255 - temp
+	temp2 = 255 - temp
+	vignette = temp2 * 2
 	#using the sanity variable to work out vignette opacity. sanity /13 will ensure vignette opacity is between 0 and 
 	#255. since opacity is inverse to sanity, temp is used to subtract it from 255.
 	modulate.a8 = vignette  
 	#changing the opacity of the vignette
 	#print(vignette)
-
+	
 	if Input.is_action_just_pressed("ui_n") or argument:
 		argumentNarwhal = true
 		narwhal = true
@@ -46,6 +48,7 @@ func _process(delta):
 		#if the shift key is released, the player stops running.
 
 	time += delta
+	stopwatch += delta
 	#creating a timer
 	if time >= 1.0:
 		sanity -= 11
@@ -67,6 +70,17 @@ func _process(delta):
 			sanity -= totalExponential
 			sanity +- narwhalIncrease
 	if sanity < 0:
-		pass
+		get_tree().quit()
 			#if the character is holding the narwhal and running, sanity decreases by an exponential of 1.2, but increases by an exponential of 0.85
+
+	if narwhal:
+		emit_signal("stun")
+	
+	if sanity < 1500 and argument2:
+		emit_signal("vignetteButRed")
+		emit_signal("sanityValue", sanity)
+		
 	Global.sanity = sanity
+	emit_signal("stopWatch")
+	
+	

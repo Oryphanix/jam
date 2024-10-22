@@ -1,10 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://dyyvcvbomxviu"]
+[gd_scene load_steps=41 format=3 uid="uid://dyyvcvbomxviu"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_dee56"]
 [ext_resource type="Texture2D" uid="uid://b7okyhytlhpsh" path="res://art/Idle_animation_sprite_sheet_27x82.png" id="2_6rwlf"]
 [ext_resource type="Texture2D" uid="uid://cfyu2i6ii7ess" path="res://art/walking_animation_sprite_sheet_400x656.png" id="2_lukfq"]
 [ext_resource type="Texture2D" uid="uid://bvg4uv2nuid7x" path="res://art/vignette final.png" id="4_8i6og"]
 [ext_resource type="Script" path="res://player/vingette.gd" id="5_456t7"]
+[ext_resource type="Script" path="res://player/vignette_but_red.gd" id="6_8203o"]
+[ext_resource type="Texture2D" uid="uid://cnubyy3f8mfpc" path="res://art/vignette but red.png" id="7_pn5ef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7ix4"]
 atlas = ExtResource("2_lukfq")
@@ -242,7 +244,7 @@ size = Vector2(19, 71)
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
 
-[node name="player" type="CharacterBody2D" parent="." groups=["Player"]]
+[node name="player" type="CharacterBody2D" parent="." groups=["Player", "item pick"]]
 script = ExtResource("1_dee56")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
@@ -256,11 +258,19 @@ frame_progress = 0.55263
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_w887o")
 
-[node name="Sprite2D" type="Sprite2D" parent="player"]
+[node name="VIgnette" type="Sprite2D" parent="player"]
 position = Vector2(87, 17)
 scale = Vector2(1.03735, 1)
 texture = ExtResource("4_8i6og")
 script = ExtResource("5_456t7")
 
+[node name="Vignette but red" type="Sprite2D" parent="player"]
+position = Vector2(-8, 11)
+texture = ExtResource("7_pn5ef")
+script = ExtResource("6_8203o")
+
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(1.055, 1.055)
+
+[connection signal="sanityValue" from="player/VIgnette" to="player/Vignette but red" method="_on_v_ignette_sanity_value"]
+[connection signal="vignetteButRed" from="player/VIgnette" to="player/Vignette but red" method="_on_v_ignette_vignette_but_red"]

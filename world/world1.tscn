@@ -1,10 +1,27 @@
-[gd_scene load_steps=14 format=4 uid="uid://20udwjhfvlln"]
+[gd_scene load_steps=31 format=3 uid="uid://20udwjhfvlln"]
 
-[ext_resource type="TileSet" uid="uid://ckt3cxeu5d5gi" path="res://world/placeholder.tres" id="1_3ilp7"]
 [ext_resource type="Script" path="res://world/roomcameradetector.gd" id="2_47jon"]
 [ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="3_2k328"]
 [ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="4_57ndh"]
 [ext_resource type="Script" path="res://world/switchscne.gd" id="5_33k48"]
+[ext_resource type="PackedScene" uid="uid://2w4xin683x4e" path="res://items/battery.tscn" id="6_o1mvm"]
+[ext_resource type="Script" path="res://items/itemscripts/battery script.gd" id="7_d3xi2"]
+[ext_resource type="PackedScene" uid="uid://bluk18vs74fft" path="res://items/fuel.tscn" id="7_qy6xu"]
+[ext_resource type="PackedScene" uid="uid://wdsaa31gtera" path="res://items/match.tscn" id="8_f7y0s"]
+[ext_resource type="PackedScene" uid="uid://bsin7nl75n678" path="res://items/match_striker.tscn" id="9_1da3y"]
+[ext_resource type="Script" path="res://items/itemscripts/fuel.gd" id="9_ydnoy"]
+[ext_resource type="PackedScene" uid="uid://bjplefeokul64" path="res://items/rope.tscn" id="10_jxuo5"]
+[ext_resource type="PackedScene" uid="uid://cxdp6s81o5w46" path="res://items/wire.tscn" id="11_3mff5"]
+[ext_resource type="Script" path="res://items/itemscripts/match.gd" id="11_bsq71"]
+[ext_resource type="Script" path="res://items/itemscripts/match_striker.gd" id="13_8mtqt"]
+[ext_resource type="Script" path="res://items/itemscripts/rope script.gd" id="15_hvxom"]
+[ext_resource type="Script" path="res://items/itemscripts/battery_inventory.gd" id="17_jpr8c"]
+[ext_resource type="Script" path="res://items/wire.gd" id="17_u2b2u"]
+[ext_resource type="Script" path="res://items/itemscripts/fuel_inventory.gd" id="18_0hwhu"]
+[ext_resource type="Script" path="res://items/itemscripts/match_inventory.gd" id="19_bx6g6"]
+[ext_resource type="Script" path="res://items/itemscripts/match_striker_invenotry.gd" id="20_gqs6n"]
+[ext_resource type="Script" path="res://items/itemscripts/inventory rope.gd" id="21_uerqd"]
+[ext_resource type="Script" path="res://items/wire inventory.gd" id="23_oiath"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6iq8v"]
 size = Vector2(1, 96.5)
@@ -32,10 +49,6 @@ size = Vector2(3, 129)
 
 [node name="World" type="Node2D"]
 position = Vector2(0, 160)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAmAAAAAQACAAIAAAAnAAAAAQACAAIAAAAoAAAAAQACAAIAAAApAAAAAQACAAIAAAAqAAAAAQACAAIAAAArAAAAAQACAAIAAAAsAAAAAQACAAIAAAAtAAAAAQACAAIAAAAuAAAAAQACAAIAAAAvAAAAAQACAAIAAAAwAAAAAQACAAIAAAAxAAAAAQACAAIAAAAyAAAAAQACAAIAAAAzAAAAAQACAAIAAAA0AAAAAQACAAIAAAA1AAAAAQACAAIAAAA2AAAAAQACAAIAAAA4AAAAAQACAAIAAAA5AAAAAQACAAIAAAA3AAAAAQACAAIAAAA6AAAAAQACAAIAAAA7AAAAAQACAAIAAAA8AAAAAQACAAIAAAA9AAAAAQACAAIAAAA+AAAAAQACAAIAAAA/AAAAAQACAAIAAAAmAPj/AQACAAIAAAAmAPn/AQACAAIAAAAmAPf/AQACAAIAAAA+APf/AQACAAIAAAA+APj/AQACAAIAAAA+APn/AQACAAIAAAAmAPr/AQAFAAIAAAAmAPv/AQAFAAIAAAAmAPz/AQAFAAIAAAAmAP3/AQAFAAIAAAAmAP7/AQAFAAIAAAAmAP//AQAFAAIAAABAAPf/AQACAAIAAABBAPf/AQACAAIAAABCAPf/AQACAAIAAABDAPf/AQACAAIAAABEAPf/AQACAAIAAABFAPf/AQACAAIAAABGAPf/AQACAAIAAABHAPf/AQACAAIAAABIAPf/AQACAAIAAABJAPf/AQACAAIAAABKAPf/AQACAAIAAABLAPf/AQACAAIAAABMAPf/AQACAAIAAABNAPf/AQACAAIAAABOAPf/AQACAAIAAABPAPf/AQACAAIAAABQAPf/AQACAAIAAABRAPf/AQACAAIAAABSAPf/AQACAAIAAABTAPf/AQACAAIAAABUAPf/AQACAAIAAABVAPf/AQACAAIAAABWAPf/AQACAAIAAABXAPf/AQACAAIAAABYAPf/AQACAAIAAABZAPf/AQACAAIAAAA/APf/AQACAAIAAABZAPj/AQACAAIAAABZAPn/AQACAAIAAABAAAAAAQACAAIAAABBAAAAAQACAAIAAABCAAAAAQACAAIAAABDAAAAAQACAAIAAABEAAAAAQACAAIAAABFAAAAAQACAAIAAABGAAAAAQACAAIAAABHAAAAAQACAAIAAABIAAAAAQACAAIAAABJAAAAAQACAAIAAABKAAAAAQACAAIAAABLAAAAAQACAAIAAABMAAAAAQACAAIAAABNAAAAAQACAAIAAABOAAAAAQACAAIAAABPAAAAAQACAAIAAABQAAAAAQACAAIAAABRAAAAAQACAAIAAABSAAAAAQACAAIAAABTAAAAAQACAAIAAABUAAAAAQACAAIAAABVAAAAAQACAAIAAABWAAAAAQACAAIAAABXAAAAAQACAAIAAABYAAAAAQACAAIAAABZAAAAAQACAAIAAABaAAAAAQACAAIAAABbAAAAAQACAAIAAABcAAAAAQACAAIAAABdAAAAAQACAAIAAABeAAAAAQACAAIAAABfAAAAAQACAAIAAABgAAAAAQACAAIAAABhAAAAAQACAAIAAABiAAAAAQACAAIAAABjAAAAAQACAAIAAABkAAAAAQACAAIAAABlAAAAAQACAAIAAABmAAAAAQACAAIAAABnAAAAAQACAAIAAABoAAAAAQACAAIAAABpAAAAAQACAAIAAABqAAAAAQACAAIAAABrAAAAAQACAAIAAABsAAAAAQACAAIAAABaAPf/AQACAAIAAABbAPf/AQACAAIAAABcAPf/AQACAAIAAABdAPf/AQACAAIAAABeAPf/AQACAAIAAABfAPf/AQACAAIAAABgAPf/AQACAAIAAABhAPf/AQACAAIAAABiAPf/AQACAAIAAABjAPf/AQACAAIAAABkAPf/AQACAAIAAABlAPf/AQACAAIAAABmAPf/AQACAAIAAABnAPf/AQACAAIAAABoAPf/AQACAAIAAABpAPf/AQACAAIAAABqAPf/AQACAAIAAABrAPf/AQACAAIAAABsAPf/AQACAAIAAABsAPj/AQACAAIAAABsAPn/AQACAAIAAABtAPf/AQACAAIAAABuAPf/AQACAAIAAABvAPf/AQACAAIAAABwAPf/AQACAAIAAABxAPf/AQACAAIAAABxAPj/AQACAAIAAABxAPn/AQACAAIAAABxAPr/AQACAAIAAABxAPv/AQACAAIAAABxAPz/AQACAAIAAABxAP3/AQACAAIAAABxAP7/AQACAAIAAABxAP//AQACAAIAAABxAAAAAQACAAIAAABwAAAAAQACAAIAAABvAAAAAQACAAIAAABuAAAAAQACAAIA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")
-tile_set = ExtResource("1_3ilp7")
 
 [node name="Room1" type="Area2D" parent="."]
 script = ExtResource("2_47jon")
@@ -118,7 +131,7 @@ limit_bottom = 58
 limit_smoothed = true
 
 [node name="Player" parent="." instance=ExtResource("3_2k328")]
-position = Vector2(385, -49)
+position = Vector2(434, -38)
 
 [node name="Enemy" parent="." instance=ExtResource("4_57ndh")]
 position = Vector2(462, -25)
@@ -130,8 +143,61 @@ script = ExtResource("5_33k48")
 position = Vector2(1756.5, -64.5)
 shape = SubResource("RectangleShape2D_abqns")
 
+[node name="fuel" parent="." instance=ExtResource("7_qy6xu")]
+position = Vector2(815, -69)
+script = ExtResource("9_ydnoy")
+
+[node name="match" parent="." instance=ExtResource("8_f7y0s")]
+position = Vector2(233, -72)
+script = ExtResource("11_bsq71")
+
+[node name="match striker" parent="." instance=ExtResource("9_1da3y")]
+position = Vector2(37, -52)
+script = ExtResource("13_8mtqt")
+
+[node name="rope" parent="." instance=ExtResource("10_jxuo5")]
+position = Vector2(1046, -80)
+script = ExtResource("15_hvxom")
+
+[node name="wire" parent="." instance=ExtResource("11_3mff5")]
+position = Vector2(276, -59)
+script = ExtResource("17_u2b2u")
+
+[node name="battery inventory" parent="." instance=ExtResource("6_o1mvm")]
+position = Vector2(-54, -292)
+script = ExtResource("17_jpr8c")
+
+[node name="fuel inventory" parent="." instance=ExtResource("7_qy6xu")]
+position = Vector2(115, -260)
+script = ExtResource("18_0hwhu")
+
+[node name="match inventory" parent="." instance=ExtResource("8_f7y0s")]
+position = Vector2(291, -288)
+script = ExtResource("19_bx6g6")
+
+[node name="match striker inventory" parent="." instance=ExtResource("9_1da3y")]
+position = Vector2(477, -271)
+script = ExtResource("20_gqs6n")
+
+[node name="rope inventory" parent="." instance=ExtResource("10_jxuo5")]
+position = Vector2(704, -286)
+script = ExtResource("21_uerqd")
+
+[node name="wire inventory" parent="." instance=ExtResource("11_3mff5")]
+position = Vector2(945, -284)
+script = ExtResource("23_oiath")
+
+[node name="battery" parent="." instance=ExtResource("6_o1mvm")]
+position = Vector2(650, -19)
+script = ExtResource("7_d3xi2")
+
 [connection signal="body_entered" from="Room1" to="Room1" method="_on_body_entered"]
 [connection signal="body_entered" from="Room2" to="Room2" method="_on_body_entered"]
 [connection signal="body_entered" from="Room3" to="Room3" method="_on_body_entered"]
 [connection signal="body_entered" from="Room4" to="Room4" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="fuelInventory" from="fuel" to="fuel inventory" method="_on_fuel_fuel_inventory"]
+[connection signal="matchInventory" from="match" to="match inventory" method="_on_match_match_inventory"]
+[connection signal="matchStrikerInventory" from="match striker" to="match striker inventory" method="_on_match_striker_match_striker_inventory"]
+[connection signal="ropeInventory" from="rope" to="rope inventory" method="_on_rope_rope_inventory"]
+[connection signal="wireInventory" from="wire" to="wire inventory" method="_on_wire_wire_inventory"]
