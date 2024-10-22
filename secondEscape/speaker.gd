@@ -1,5 +1,5 @@
 extends Area2D
-signal fuelInventory
+signal escape2
 #creating a signal that can be emitted.
 func _on_ready():
 	modulate.a8 = 0 
@@ -12,7 +12,7 @@ func _on_body_entered(body):
 	#checking for a collision
 		modulate.a8 = 0
 		#making the opacity of the object 0, and thus hiding it.
-		emit_signal ("fuelInventory")
+		emit_signal ("fescape2")
 		#emitting the signal when picked up by the player
 
 

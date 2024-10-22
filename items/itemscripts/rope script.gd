@@ -1,6 +1,11 @@
 extends Area2D
 signal ropeInventory
 #creating a signal that can be emitted.
+func _ready():
+	modulate.a8 = 0
+
+func _on_lock_yellow_yellow_lock_open():
+	modulate.a8 = 255
 func _on_body_entered(body):
 	#signal generation
 	if body.is_in_group("item pick"): 

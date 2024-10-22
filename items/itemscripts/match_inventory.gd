@@ -13,3 +13,11 @@ func _on_match_match_inventory() -> void:
 	#revealing it when it is picked up
 	argument = false
 	#stopping it from hiding again
+
+
+func _on_lock_brown_brown_lock_open() -> void:
+	modulate.a8 = 255
+
+
+func _on_fire_location_fire_area_reached() -> void:
+	modulate.a8 = 0

@@ -1,10 +1,9 @@
-[gd_scene load_steps=32 format=4 uid="uid://20udwjhfvlln"]
+[gd_scene load_steps=31 format=4 uid="uid://20udwjhfvlln"]
 
 [ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_3ilp7"]
 [ext_resource type="Script" path="res://world/roomcameradetector.gd" id="2_47jon"]
 [ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="3_2k328"]
 [ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="4_57ndh"]
-[ext_resource type="Script" path="res://world/switchscne.gd" id="5_33k48"]
 [ext_resource type="PackedScene" uid="uid://cxdp6s81o5w46" path="res://items/wire.tscn" id="6_66mqv"]
 [ext_resource type="Script" path="res://items/wire.gd" id="7_j3w8p"]
 [ext_resource type="PackedScene" uid="uid://bjplefeokul64" path="res://items/rope.tscn" id="7_ugrhi"]
@@ -145,7 +144,6 @@ position = Vector2(462, -25)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(21, 4)
-script = ExtResource("5_33k48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1756.5, -64.5)
