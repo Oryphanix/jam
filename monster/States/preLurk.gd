@@ -1,8 +1,8 @@
 extends State
 class_name prelurk
 
-@export var minTime := 1
-@export var maxTime := 1.5
+@export var minTime := 2.5
+@export var maxTime := 12.5
 @export var en: CharacterBody2D
 var delayTimer: Timer
 
@@ -15,6 +15,7 @@ func wait():
 
 func Enter():
 	print("prelurk")
+	GlobalSceneData.enemyState = "prelurking"
 	en.hide()
 	wait()
 	

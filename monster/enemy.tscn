@@ -68,8 +68,9 @@ process_callback = 0
 wait_time = 10.0
 one_shot = true
 
-[node name="Chasing" type="Node" parent="enemy/StateMachine"]
+[node name="Chasing" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_jbkc5")
+enemy = NodePath("../..")
 
 [node name="leftdetection" type="Area2D" parent="enemy"]
 
