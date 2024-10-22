@@ -55,3 +55,6 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	$AnimatedSprite2D.play("default")
 	$Camera2D.make_current()
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()

@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjplefeokul64"]
 
-[ext_resource type="Texture2D" uid="uid://sj237xkvwcn8" path="res://art/vector-pixel-art-rope-vector-pixel-art-rope-isolated-cartoon-149872214.webp" id="2_28qvc"]
+[ext_resource type="Texture2D" uid="uid://20lag0peso8h" path="res://items/rope pixel.png" id="1_1jwy2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xacbr"]
-size = Vector2(269, 150)
+size = Vector2(41.5, 25)
 
 [node name="rope" type="Area2D"]
 position = Vector2(5, -1)
@@ -11,10 +11,10 @@ position = Vector2(5, -1)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 4.5)
 scale = Vector2(0.325, 0.20125)
-texture = ExtResource("2_28qvc")
+texture = ExtResource("1_1jwy2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2.5)
+position = Vector2(-0.75, 3.5)
 shape = SubResource("RectangleShape2D_xacbr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

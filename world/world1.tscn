@@ -1,10 +1,28 @@
-[gd_scene load_steps=14 format=4 uid="uid://20udwjhfvlln"]
+[gd_scene load_steps=32 format=4 uid="uid://20udwjhfvlln"]
 
-[ext_resource type="TileSet" uid="uid://ckt3cxeu5d5gi" path="res://world/placeholder.tres" id="1_3ilp7"]
+[ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_3ilp7"]
 [ext_resource type="Script" path="res://world/roomcameradetector.gd" id="2_47jon"]
 [ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="3_2k328"]
 [ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="4_57ndh"]
 [ext_resource type="Script" path="res://world/switchscne.gd" id="5_33k48"]
+[ext_resource type="PackedScene" uid="uid://cxdp6s81o5w46" path="res://items/wire.tscn" id="6_66mqv"]
+[ext_resource type="Script" path="res://items/wire.gd" id="7_j3w8p"]
+[ext_resource type="PackedScene" uid="uid://bjplefeokul64" path="res://items/rope.tscn" id="7_ugrhi"]
+[ext_resource type="Script" path="res://items/itemscripts/rope script.gd" id="8_5gtja"]
+[ext_resource type="PackedScene" uid="uid://bluk18vs74fft" path="res://items/fuel.tscn" id="9_baqpg"]
+[ext_resource type="Script" path="res://items/itemscripts/fuel.gd" id="10_rpvlv"]
+[ext_resource type="PackedScene" uid="uid://2w4xin683x4e" path="res://items/battery.tscn" id="11_2k4nc"]
+[ext_resource type="Script" path="res://items/itemscripts/battery script.gd" id="12_vex1q"]
+[ext_resource type="PackedScene" uid="uid://bsin7nl75n678" path="res://items/match_striker.tscn" id="13_6kefe"]
+[ext_resource type="Script" path="res://items/itemscripts/match_striker.gd" id="14_ao6bk"]
+[ext_resource type="PackedScene" uid="uid://wdsaa31gtera" path="res://items/match.tscn" id="15_3fmyu"]
+[ext_resource type="Script" path="res://items/itemscripts/match.gd" id="16_y4mlh"]
+[ext_resource type="Script" path="res://items/itemscripts/match_inventory.gd" id="17_5mg5g"]
+[ext_resource type="Script" path="res://items/itemscripts/battery_inventory.gd" id="18_nyj2h"]
+[ext_resource type="Script" path="res://items/itemscripts/fuel_inventory.gd" id="19_2sg48"]
+[ext_resource type="Script" path="res://items/itemscripts/match_striker_invenotry.gd" id="20_pdgwi"]
+[ext_resource type="Script" path="res://items/itemscripts/inventory rope.gd" id="21_i438c"]
+[ext_resource type="Script" path="res://items/wire inventory.gd" id="23_p8tcl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6iq8v"]
 size = Vector2(1, 96.5)
@@ -130,8 +148,62 @@ script = ExtResource("5_33k48")
 position = Vector2(1756.5, -64.5)
 shape = SubResource("RectangleShape2D_abqns")
 
+[node name="wire" parent="." instance=ExtResource("6_66mqv")]
+position = Vector2(6, -9)
+script = ExtResource("7_j3w8p")
+
+[node name="rope" parent="." instance=ExtResource("7_ugrhi")]
+position = Vector2(309, -28)
+script = ExtResource("8_5gtja")
+
+[node name="fuel" parent="." instance=ExtResource("9_baqpg")]
+position = Vector2(51, -24)
+script = ExtResource("10_rpvlv")
+
+[node name="battery" parent="." instance=ExtResource("11_2k4nc")]
+position = Vector2(150, -21)
+script = ExtResource("12_vex1q")
+
+[node name="match striker" parent="." instance=ExtResource("13_6kefe")]
+position = Vector2(258, -12)
+script = ExtResource("14_ao6bk")
+
+[node name="match" parent="." instance=ExtResource("15_3fmyu")]
+position = Vector2(205, -36)
+script = ExtResource("16_y4mlh")
+
+[node name="match inventory" parent="." instance=ExtResource("15_3fmyu")]
+position = Vector2(193, -313)
+script = ExtResource("17_5mg5g")
+
+[node name="battery inventory" parent="." instance=ExtResource("11_2k4nc")]
+position = Vector2(36, -292)
+script = ExtResource("18_nyj2h")
+
+[node name="fuel inventory" parent="." instance=ExtResource("9_baqpg")]
+position = Vector2(130, -307)
+script = ExtResource("19_2sg48")
+
+[node name="match striker inventory" parent="." instance=ExtResource("13_6kefe")]
+position = Vector2(90, -288)
+script = ExtResource("20_pdgwi")
+
+[node name="rope inventory" parent="." instance=ExtResource("7_ugrhi")]
+position = Vector2(-40, -298)
+script = ExtResource("21_i438c")
+
+[node name="wire inventory" parent="." instance=ExtResource("6_66mqv")]
+position = Vector2(-87, -301)
+script = ExtResource("23_p8tcl")
+
 [connection signal="body_entered" from="Room1" to="Room1" method="_on_body_entered"]
 [connection signal="body_entered" from="Room2" to="Room2" method="_on_body_entered"]
 [connection signal="body_entered" from="Room3" to="Room3" method="_on_body_entered"]
 [connection signal="body_entered" from="Room4" to="Room4" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="matchWireInventory" from="wire" to="wire inventory" method="_on_wire_match_wire_inventory"]
+[connection signal="ropeInventory" from="rope" to="rope inventory" method="_on_rope_rope_inventory"]
+[connection signal="fuelInventory" from="fuel" to="fuel inventory" method="_on_fuel_fuel_inventory"]
+[connection signal="batteryInventory" from="battery" to="battery inventory" method="_on_battery_battery_inventory"]
+[connection signal="matchStrikerInventory" from="match striker" to="match striker inventory" method="_on_match_striker_match_striker_inventory"]
+[connection signal="matchInventory" from="match" to="match inventory" method="_on_match_match_inventory"]
