@@ -16,9 +16,6 @@ func _on_body_entered(body: Node2D) -> void:
 		var CSF = get_tree().current_scene.scene_file_path
 		var NLN = CSF.to_int() - 1
 		var NLP = "res://world/world" + str(NLN) + ".tscn"
-		print(CSF)
-		print(NLN)
-		print(NLP)
 		get_tree().change_scene_to_file(NLP)
 	else:
 		print(body.name)

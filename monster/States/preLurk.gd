@@ -1,8 +1,8 @@
 extends State
 class_name prelurk
 
-@export var minTime := 1
-@export var maxTime := 1.5
+@export var minTime := 2.5
+@export var maxTime := 12.5
 @export var en: CharacterBody2D
 var delayTimer: Timer
 
@@ -14,12 +14,18 @@ func wait():
 	add_child(delayTimer)
 
 func Enter():
-	print("prelurk")
+	GlobalSceneData.enemyStateName = "prelurking"
+	GlobalSceneData.enemyState = self
+	print(GlobalSceneData.enemyStateName)
 	en.hide()
 	wait()
-	
+
+func Update(_delta: float):
+	if Global.sanity <= (2*Global.maxSanity)/3 and Global.sanity > (Global.maxSanity)/3:
+		SignalManager.transitioned.emit(self, "stalking")
+
 func on_timer_finished():
-	Transitioned.emit(self,"lurking")
+	SignalManager.transitioned.emit(self,"lurking")
 	
 func Exit():
 	delayTimer.stop()

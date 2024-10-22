@@ -9,7 +9,7 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child 
-			child.Transitioned.connect(change_state)
+	SignalManager.transitioned.connect(change_state)
 	if initialState:
 		initialState.Enter()
 		currentState = initialState
@@ -25,8 +25,10 @@ func _physics_process(delta):
 		
 #Function for changing state
 func change_state(state: State, newStateName: String):
-	#Checking for state existence
 	if state != currentState:
+		print("state is not current")
+		print(state)
+		print(currentState)
 		return
 	var newState = states.get(newStateName.to_lower())
 	if !newState:
