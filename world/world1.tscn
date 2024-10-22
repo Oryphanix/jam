@@ -138,8 +138,9 @@ limit_bottom = 58
 limit_smoothed = true
 
 [node name="Player" parent="." instance=ExtResource("3_2k328")]
-visible = false
-position = Vector2(388, -37)
+position = Vector2(385, -49)
+
+
 
 [node name="Enemy" parent="." instance=ExtResource("4_57ndh")]
 position = Vector2(462, -25)

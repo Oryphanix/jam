@@ -183,7 +183,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 20.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -249,8 +249,6 @@ script = ExtResource("1_dee56")
 position = Vector2(-0.234374, 3.8147e-06)
 scale = Vector2(0.113281, 0.110518)
 sprite_frames = SubResource("SpriteFrames_pva5b")
-frame = 14
-frame_progress = 0.55263
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(-0.5, -0.5)
