@@ -9,7 +9,9 @@ func _ready():
 
 
 
-func _on_match_striker_match_striker_inventory():
+
+
+func _on_wire_match_wire_inventory() -> void:
 	modulate.a8 = 255
 	#revealing it when it is picked up
 	argument = false

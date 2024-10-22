@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://2b2ggbqko0t5"]
 
-[ext_resource type="TileSet" uid="uid://ckt3cxeu5d5gi" path="res://world/placeholder.tres" id="1_fb7wu"]
+[ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_fb7wu"]
 [ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="2_v88il"]
 [ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="3_it3g3"]
 [ext_resource type="Script" path="res://world/scne.gd" id="4_v6k0y"]
@@ -19,6 +19,7 @@ tile_set = ExtResource("1_fb7wu")
 position = Vector2(357, -18)
 
 [node name="Node2D" parent="." instance=ExtResource("3_it3g3")]
+visible = false
 position = Vector2(119, -54)
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://wdsaa31gtera"]
 
-[ext_resource type="Texture2D" uid="uid://fewayjdb1uxn" path="res://art/match.png" id="2_qwugf"]
+[ext_resource type="Texture2D" uid="uid://dblm074xiifvf" path="res://items/match pixel.png" id="1_153b8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88g1d"]
-size = Vector2(163.5, 142)
+size = Vector2(35.75, 36)
 
 [node name="match" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.99988, 12.0983)
 scale = Vector2(0.314176, 0.303456)
-texture = ExtResource("2_qwugf")
+texture = ExtResource("1_153b8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.75, 10.8483)
+position = Vector2(-0.875, 16)
 shape = SubResource("RectangleShape2D_88g1d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
