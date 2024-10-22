@@ -27,7 +27,7 @@ size = Vector2(0.5, 126.5)
 size = Vector2(0.5, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abqns"]
-size = Vector2(3, 129)
+size = Vector2(0.5, 129)
 
 [node name="World" type="Node2D"]
 position = Vector2(0, 160)
@@ -109,10 +109,11 @@ position = Vector2(385, -49)
 position = Vector2(462, -25)
 
 [node name="nextLevel" type="Area2D" parent="."]
+position = Vector2(1717, -64)
 script = ExtResource("5_33k48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nextLevel"]
-position = Vector2(1756.5, -64.5)
+position = Vector2(27.75, -1)
 shape = SubResource("RectangleShape2D_abqns")
 
 [connection signal="body_entered" from="Room2" to="Room2" method="_on_body_entered"]

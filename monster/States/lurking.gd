@@ -12,8 +12,9 @@ func randCirlePos() -> Vector2:
 
 
 func Enter():
-	print("lurking")
-	GlobalSceneData.enemyState = "lurking"
+	GlobalSceneData.enemyStateName = "lurking"
+	GlobalSceneData.enemyState = self
+	print(GlobalSceneData.enemyState)
 	player = get_tree().get_first_node_in_group("Player")
 	var randomPos: Vector2
 	randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition

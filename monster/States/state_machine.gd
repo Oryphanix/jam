@@ -25,8 +25,10 @@ func _physics_process(delta):
 		
 #Function for changing state
 func change_state(state: State, newStateName: String):
-	#Checking for state existence
 	if state != currentState:
+		print("state is not current")
+		print(state)
+		print(currentState)
 		return
 	var newState = states.get(newStateName.to_lower())
 	if !newState:

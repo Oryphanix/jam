@@ -263,4 +263,4 @@ texture = ExtResource("4_8i6og")
 script = ExtResource("5_456t7")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(1.055, 1.055)
+zoom = Vector2(0.22, 0.22)

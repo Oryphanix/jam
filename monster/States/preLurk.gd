@@ -14,11 +14,16 @@ func wait():
 	add_child(delayTimer)
 
 func Enter():
-	print("prelurk")
-	GlobalSceneData.enemyState = "prelurking"
+	GlobalSceneData.enemyStateName = "prelurking"
+	GlobalSceneData.enemyState = self
+	print(GlobalSceneData.enemyStateName)
 	en.hide()
 	wait()
-	
+
+func Update(_delta: float):
+	if Global.sanity <= (2*Global.maxSanity)/3 and Global.sanity > (Global.maxSanity)/3:
+		SignalManager.transitioned.emit(self, "stalking")
+
 func on_timer_finished():
 	SignalManager.transitioned.emit(self,"lurking")
 	

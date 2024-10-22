@@ -1,7 +1,6 @@
 extends State
 class_name EnemyStalk
 
-#PLACEHOLDER BEHAVIOUR
 
 @export var enemy: CharacterBody2D
 @export var moveSpeed: float = 200
@@ -12,10 +11,13 @@ var dirToGo: Vector2
 
 
 func Enter():
-	GlobalSceneData.enemyState = "stalking"
+	enemy.show()
+	GlobalSceneData.enemyStateName = "stalking"
+	GlobalSceneData.enemyState = self
+	print(GlobalSceneData.enemyState)
+	Global.enemySpeed = moveSpeed
 	player = get_tree().get_first_node_in_group("Player")
 	dirToGo = Vector2(-1,0)
-	print("entered stalk")
 	
 func Physics_Update(_delta: float):
 	enemy.velocity = dirToGo * moveSpeed
@@ -23,8 +25,9 @@ func Physics_Update(_delta: float):
 func Update(_delta: float):
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
-	if distance < 140:
-		SignalManager.transitioned.emit(self, "chasing")
+	#if distance < 140:
+	#	SignalManager.transitioned.emit(self, "chasing")
+	
 
 
 func _on_body_left_entered(body: Node2D) -> void:
