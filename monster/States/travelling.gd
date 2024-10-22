@@ -6,9 +6,9 @@ var distance: float
 var speed: float
 @export var en: CharacterBody2D
 
-func wait(time):
+func wait(timex):
 	delayTimer = Timer.new()
-	delayTimer.wait_time = time
+	delayTimer.wait_time = timex
 	delayTimer.timeout.connect(on_timer_finished)
 	delayTimer.autostart = true
 	add_child(delayTimer)

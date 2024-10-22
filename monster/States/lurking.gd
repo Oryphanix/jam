@@ -18,7 +18,7 @@ func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	var randomPos: Vector2
 	randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition
-	while !(randomPos.y < 160 and randomPos.y > 16):
+	while !(randomPos.y < 0 and randomPos.y > -153):
 		randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition
 	en.global_position = randomPos
 	en.show()

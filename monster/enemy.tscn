@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpakxo81q0su"]
+[gd_scene load_steps=14 format=3 uid="uid://bpakxo81q0su"]
 
 [ext_resource type="Script" path="res://monster/enemy.gd" id="1_rg1we"]
 [ext_resource type="Texture2D" uid="uid://cj8dnp2v42tj7" path="res://monster/Screenshot 2024-08-12 170945.png" id="2_1t4wk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://monster/States/lurking.gd" id="4_s5aqr"]
 [ext_resource type="Script" path="res://monster/States/travelling.gd" id="5_wli7b"]
 [ext_resource type="Script" path="res://monster/States/chasing.gd" id="6_jbkc5"]
+[ext_resource type="Script" path="res://monster/States/chasesearching.gd" id="9_1glvw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu6n3"]
 size = Vector2(26, 60)
@@ -45,11 +46,9 @@ position = Vector2(0.937501, -31)
 scale = Vector2(0.119292, 0.275224)
 sprite_frames = SubResource("SpriteFrames_0tx3f")
 
-[node name="Camera2D" type="Camera2D" parent="enemy"]
-
 [node name="StateMachine" type="Node" parent="enemy" node_paths=PackedStringArray("initialState", "enemy")]
 script = ExtResource("3_tgi4v")
-initialState = NodePath("Stalking")
+initialState = NodePath("preLurking")
 enemy = NodePath("..")
 
 [node name="preLurking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]
@@ -75,6 +74,10 @@ one_shot = true
 
 [node name="Chasing" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_jbkc5")
+enemy = NodePath("../..")
+
+[node name="ChaseSearching" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_1glvw")
 enemy = NodePath("../..")
 
 [node name="leftdetection" type="Area2D" parent="enemy"]

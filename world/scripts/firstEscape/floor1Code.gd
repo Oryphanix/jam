@@ -8,8 +8,5 @@ func _ready():
 		SignalManager.transitioned.emit(GlobalSceneData.enemyState, "travelling")
 		$Enemy.show()
 		$Enemy.global_position = GlobalSceneData.W1stairPos
-	print("On world enetry ")
-	print(Global.sanity)
-	print(GlobalSceneData.playerSanity)
-	print("========")
+		print("loaded")
 		

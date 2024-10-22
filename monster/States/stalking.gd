@@ -25,8 +25,8 @@ func Physics_Update(_delta: float):
 func Update(_delta: float):
 	var direction = Global.playerPosition - Global.enemyPosition
 	var distance := direction.length()
-	#if distance < 140:
-	#	SignalManager.transitioned.emit(self, "chasing")
+	if distance < 140 and not Global.isPlayerhiding:
+		SignalManager.transitioned.emit(self, "chasing")
 	
 
 
