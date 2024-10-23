@@ -7,9 +7,9 @@ const MAX_SPEED = 200
 const RUNACCELERATION  = 1200
 const RUN_MAX_SPEED = 400
 
+var hideAllowed 
 
-
-
+var hiding
 
 func _physics_process(delta):
 	var input_vector = Input.get_axis("move_left", "move_right")

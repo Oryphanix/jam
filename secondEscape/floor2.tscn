@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cgh6qljdf4gaj"]
+[gd_scene load_steps=17 format=4 uid="uid://cgh6qljdf4gaj"]
 
 [ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_o4d4d"]
 [ext_resource type="PackedScene" uid="uid://2w4xin683x4e" path="res://items/battery.tscn" id="2_ttbi5"]
@@ -7,9 +7,23 @@
 [ext_resource type="Script" path="res://items/wire inventory.gd" id="5_hwxg5"]
 [ext_resource type="Script" path="res://secondEscape/speaker.gd" id="6_kl3ip"]
 [ext_resource type="Texture2D" uid="uid://cuu7x3qmqb3me" path="res://speaker.png" id="7_ots3h"]
+[ext_resource type="Script" path="res://firstEscape/hiding_locations.gd" id="8_4dd3v"]
+[ext_resource type="Texture2D" uid="uid://dcv3rdruj8mh8" path="res://Screenshot 2024-10-23 212912.png" id="9_44mje"]
+[ext_resource type="Script" path="res://firstEscape/hide.gd" id="10_xhphw"]
+[ext_resource type="Texture2D" uid="uid://ciw62s0eaicvu" path="res://Screenshot 2024-10-23 213134.png" id="11_7noao"]
+[ext_resource type="Texture2D" uid="uid://chhgyqqeqicds" path="res://Screenshot 2024-10-23 213320.png" id="12_dbdm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2msqk"]
 size = Vector2(50.3636, 66.0909)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_momek"]
+size = Vector2(96.5, 48.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv1aa"]
+size = Vector2(96, 48.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqipk"]
+size = Vector2(98, 42.375)
 
 [node name="Node2D" type="Node2D"]
 
@@ -43,6 +57,54 @@ position = Vector2(561.083, -74.3984)
 scale = Vector2(0.916667, 0.859375)
 shape = SubResource("RectangleShape2D_2msqk")
 
+[node name="hiding locations" type="Area2D" parent="speaker"]
+position = Vector2(-445, -0.75)
+script = ExtResource("8_4dd3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speaker/hiding locations"]
+position = Vector2(804, -22.25)
+shape = SubResource("RectangleShape2D_momek")
+
+[node name="hide" type="Sprite2D" parent="speaker"]
+position = Vector2(361.288, -18.927)
+scale = Vector2(0.456573, 0.416414)
+texture = ExtResource("9_44mje")
+script = ExtResource("10_xhphw")
+
+[node name="hiding locations2" type="Area2D" parent="."]
+position = Vector2(-445, -0.75)
+script = ExtResource("8_4dd3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations2"]
+position = Vector2(1427, -20.25)
+shape = SubResource("RectangleShape2D_rv1aa")
+
+[node name="hide2" type="Sprite2D" parent="."]
+position = Vector2(981.714, -18)
+scale = Vector2(0.382418, 0.416414)
+texture = ExtResource("11_7noao")
+script = ExtResource("10_xhphw")
+
+[node name="hiding locations3" type="Area2D" parent="."]
+position = Vector2(-453, 184.32)
+script = ExtResource("8_4dd3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations3"]
+position = Vector2(1703, -184.132)
+shape = SubResource("RectangleShape2D_sqipk")
+
+[node name="hide3" type="Sprite2D" parent="."]
+position = Vector2(1259, 3)
+scale = Vector2(0.382418, 0.416414)
+texture = ExtResource("12_dbdm8")
+script = ExtResource("10_xhphw")
+
 [connection signal="body_entered" from="speaker" to="speaker" method="_on_body_entered"]
 [connection signal="escape2" from="speaker" to="battery inventory" method="_on_speaker_escape_2"]
 [connection signal="escape2" from="speaker" to="wire inventory" method="_on_speaker_escape_2"]
+[connection signal="body_entered" from="speaker/hiding locations" to="speaker/hiding locations" method="_on_body_entered"]
+[connection signal="body_exited" from="speaker/hiding locations" to="speaker/hiding locations" method="_on_body_exited"]
+[connection signal="body_entered" from="hiding locations2" to="hiding locations2" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations2" to="hiding locations2" method="_on_body_exited"]
+[connection signal="body_entered" from="hiding locations3" to="hiding locations3" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations3" to="hiding locations3" method="_on_body_exited"]

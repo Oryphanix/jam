@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cwfv5c7rskath"]
+[gd_scene load_steps=24 format=4 uid="uid://cwfv5c7rskath"]
 
 [ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_0h3sx"]
 [ext_resource type="Script" path="res://thirdEscape/burnt_match.gd" id="2_snp46"]
@@ -14,9 +14,23 @@
 [ext_resource type="Script" path="res://items/itemscripts/match_striker_invenotry.gd" id="12_ir7dw"]
 [ext_resource type="Script" path="res://thirdEscape/fuel released.gd" id="13_0gh7g"]
 [ext_resource type="Texture2D" uid="uid://dhhydkkdxniiu" path="res://items/fuel pixel.png" id="14_hr80g"]
+[ext_resource type="Script" path="res://firstEscape/hiding_locations.gd" id="15_tv7rg"]
+[ext_resource type="Texture2D" uid="uid://dcv3rdruj8mh8" path="res://Screenshot 2024-10-23 212912.png" id="16_yx33i"]
+[ext_resource type="Script" path="res://firstEscape/hide.gd" id="17_6yxh0"]
+[ext_resource type="Texture2D" uid="uid://ciw62s0eaicvu" path="res://Screenshot 2024-10-23 213134.png" id="18_2baa0"]
+[ext_resource type="Texture2D" uid="uid://chhgyqqeqicds" path="res://Screenshot 2024-10-23 213320.png" id="19_2ofux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpcm3"]
 size = Vector2(119, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwlml"]
+size = Vector2(96.5, 48.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edpec"]
+size = Vector2(96, 48.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gejjr"]
+size = Vector2(98, 42.375)
 
 [node name="Node2D" type="Node2D"]
 
@@ -71,6 +85,48 @@ position = Vector2(1480, -67)
 shape = SubResource("RectangleShape2D_gpcm3")
 script = ExtResource("6_dod7r")
 
+[node name="hiding locations" type="Area2D" parent="Area2D"]
+position = Vector2(-445, -0.75)
+script = ExtResource("15_tv7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/hiding locations"]
+position = Vector2(804, -22.25)
+shape = SubResource("RectangleShape2D_lwlml")
+
+[node name="hide" type="Sprite2D" parent="Area2D"]
+position = Vector2(361.288, -18.927)
+scale = Vector2(0.456573, 0.416414)
+texture = ExtResource("16_yx33i")
+script = ExtResource("17_6yxh0")
+
+[node name="hiding locations2" type="Area2D" parent="."]
+position = Vector2(-445, -0.75)
+script = ExtResource("15_tv7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations2"]
+position = Vector2(1427, -20.25)
+shape = SubResource("RectangleShape2D_edpec")
+
+[node name="hide2" type="Sprite2D" parent="."]
+position = Vector2(981.714, -18)
+scale = Vector2(0.382418, 0.416414)
+texture = ExtResource("18_2baa0")
+script = ExtResource("17_6yxh0")
+
+[node name="hiding locations3" type="Area2D" parent="."]
+position = Vector2(-453, 184.32)
+script = ExtResource("15_tv7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations3"]
+position = Vector2(1703, -184.132)
+shape = SubResource("RectangleShape2D_gejjr")
+
+[node name="hide3" type="Sprite2D" parent="."]
+position = Vector2(1259, 3)
+scale = Vector2(0.382418, 0.416414)
+texture = ExtResource("19_2ofux")
+script = ExtResource("17_6yxh0")
+
 [connection signal="burn" from="burnt match" to="fire" method="_on_burnt_match_burn"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="fireAreaReached" from="Area2D/fire location" to="burnt match" method="_on_fire_location_fire_area_reached"]
@@ -78,3 +134,9 @@ script = ExtResource("6_dod7r")
 [connection signal="fireAreaReached" from="Area2D/fire location" to="match inventory" method="_on_fire_location_fire_area_reached"]
 [connection signal="fireAreaReached" from="Area2D/fire location" to="match striker inventory" method="_on_fire_location_fire_area_reached"]
 [connection signal="fireAreaReached" from="Area2D/fire location" to="fuel" method="_on_fire_location_fire_area_reached"]
+[connection signal="body_entered" from="Area2D/hiding locations" to="Area2D/hiding locations" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D/hiding locations" to="Area2D/hiding locations" method="_on_body_exited"]
+[connection signal="body_entered" from="hiding locations2" to="hiding locations2" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations2" to="hiding locations2" method="_on_body_exited"]
+[connection signal="body_entered" from="hiding locations3" to="hiding locations3" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations3" to="hiding locations3" method="_on_body_exited"]

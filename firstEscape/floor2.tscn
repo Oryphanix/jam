@@ -6,17 +6,30 @@
 [ext_resource type="Script" path="res://firstEscape/open_window.gd" id="4_i4co0"]
 [ext_resource type="Texture2D" uid="uid://t7tfd52wrnt8" path="res://firstEscape/open window.png" id="5_dgb2f"]
 [ext_resource type="Texture2D" uid="uid://c23nb6rpcp6gw" path="res://firstEscape/closed windoe.png" id="6_mq0bn"]
+
 [ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="7_10iyv"]
 [ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="8_kbjm4"]
 [ext_resource type="PackedScene" uid="uid://cxl07yi276vcv" path="res://world/room.tscn" id="9_kgmf4"]
 [ext_resource type="PackedScene" uid="uid://bsxr157bxs2vn" path="res://world/scripts/firstEscape/stairs2-1.tscn" id="10_b4dnp"]
 [ext_resource type="PackedScene" uid="uid://dga423uaysrht" path="res://world/scripts/firstEscape/stairs2-3.tscn" id="11_cmfcr"]
 
+[ext_resource type="Script" path="res://firstEscape/hiding_locations.gd" id="7_ax2nu"]
+[ext_resource type="Texture2D" uid="uid://dcv3rdruj8mh8" path="res://Screenshot 2024-10-23 212912.png" id="8_oi5v0"]
+[ext_resource type="Script" path="res://firstEscape/hide.gd" id="9_6jshr"]
+[ext_resource type="Texture2D" uid="uid://ciw62s0eaicvu" path="res://Screenshot 2024-10-23 213134.png" id="10_fss5l"]
+[ext_resource type="Texture2D" uid="uid://chhgyqqeqicds" path="res://Screenshot 2024-10-23 213320.png" id="11_2gomv"]
+
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7pdp"]
 size = Vector2(58, 60)
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vybxs"]
 size = Vector2(0, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa6lw"]
+size = Vector2(98, 42.375)
+
 
 [node name="Node2D" type="Node2D"]
 
@@ -58,6 +71,7 @@ texture = ExtResource("6_mq0bn")
 position = Vector2(1149, -92)
 scale = Vector2(0.147368, 0.147368)
 texture = ExtResource("6_mq0bn")
+
 
 [node name="Node2D" parent="." instance=ExtResource("7_10iyv")]
 position = Vector2(71, -35)
@@ -148,5 +162,53 @@ position = Vector2(40, -44)
 [node name="Stairs2-3" parent="." instance=ExtResource("11_cmfcr")]
 position = Vector2(1823, -46)
 
+[node name="hiding locations" type="Area2D" parent="."]
+position = Vector2(-445, -0.75)
+script = ExtResource("7_ax2nu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations"]
+position = Vector2(804, -22.25)
+shape = SubResource("RectangleShape2D_pa6lw")
+
+[node name="hide" type="Sprite2D" parent="."]
+position = Vector2(361.288, -18.927)
+scale = Vector2(0.456573, 0.416414)
+texture = ExtResource("8_oi5v0")
+script = ExtResource("9_6jshr")
+
+[node name="hiding locations2" type="Area2D" parent="."]
+position = Vector2(-445, -0.75)
+script = ExtResource("7_ax2nu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations2"]
+position = Vector2(1427, -20.25)
+shape = SubResource("RectangleShape2D_pa6lw")
+
+[node name="hide2" type="Sprite2D" parent="."]
+position = Vector2(981.714, -18)
+scale = Vector2(0.382418, 0.416414)
+texture = ExtResource("10_fss5l")
+script = ExtResource("9_6jshr")
+
+[node name="hiding locations3" type="Area2D" parent="."]
+position = Vector2(-453, 184.32)
+script = ExtResource("7_ax2nu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations3"]
+position = Vector2(1703, -184.132)
+shape = SubResource("RectangleShape2D_pa6lw")
+
+[node name="hide3" type="Sprite2D" parent="."]
+position = Vector2(1259, 3)
+scale = Vector2(0.382418, 0.416414)
+texture = ExtResource("11_2gomv")
+script = ExtResource("9_6jshr")
+
 [connection signal="body_entered" from="open window" to="open window" method="_on_body_entered"]
 [connection signal="escape1" from="open window" to="rope inventory" method="_on_open_window_escape_1"]
+[connection signal="body_entered" from="hiding locations" to="hiding locations" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations" to="hiding locations" method="_on_body_exited"]
+[connection signal="body_entered" from="hiding locations2" to="hiding locations2" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations2" to="hiding locations2" method="_on_body_exited"]
+[connection signal="body_entered" from="hiding locations3" to="hiding locations3" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations3" to="hiding locations3" method="_on_body_exited"]
