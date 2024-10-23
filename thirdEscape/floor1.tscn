@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cd2c3smpd7gl3"]
+[gd_scene load_steps=23 format=4 uid="uid://cd2c3smpd7gl3"]
 
 [ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_pjffl"]
 [ext_resource type="Script" path="res://firstEscape/lock_yellow.gd" id="2_qtumt"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://items/itemscripts/match.gd" id="13_p6nvl"]
 [ext_resource type="Script" path="res://items/itemscripts/match_inventory.gd" id="14_4dynj"]
 [ext_resource type="Script" path="res://items/itemscripts/match_striker_invenotry.gd" id="15_bukt2"]
+[ext_resource type="Script" path="res://firstEscape/hiding_locations.gd" id="16_4rkdl"]
+[ext_resource type="Texture2D" uid="uid://b6dn1r1mg1vn7" path="res://Screenshot 2024-10-23 210907.png" id="17_8tckg"]
+[ext_resource type="Script" path="res://firstEscape/hide.gd" id="18_a3tjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dua7t"]
 size = Vector2(76, 31.5)
@@ -24,6 +27,9 @@ size = Vector2(58, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7r12"]
 size = Vector2(54, 27.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slne8"]
+size = Vector2(96.5, 48.75)
 
 [node name="ground floor" type="Node2D"]
 
@@ -99,6 +105,19 @@ script = ExtResource("14_4dynj")
 position = Vector2(147, -219)
 script = ExtResource("15_bukt2")
 
+[node name="hiding locations" type="Area2D" parent="."]
+script = ExtResource("16_4rkdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations"]
+position = Vector2(800, -26)
+shape = SubResource("RectangleShape2D_slne8")
+
+[node name="hide" type="Sprite2D" parent="."]
+position = Vector2(800, -51)
+scale = Vector2(0.296243, 0.296243)
+texture = ExtResource("17_8tckg")
+script = ExtResource("18_a3tjl")
+
 [connection signal="body_entered" from="lock brown" to="lock brown" method="_on_body_entered"]
 [connection signal="brownLockOpen" from="lock brown" to="brown key inventory" method="_on_lock_brown_brown_lock_open"]
 [connection signal="brownLockOpen" from="lock brown" to="match inventory" method="_on_lock_brown_brown_lock_open"]
@@ -107,3 +126,5 @@ script = ExtResource("15_bukt2")
 [connection signal="keyBrownInventory" from="brown key" to="brown key inventory" method="_on_brown_key_key_brown_inventory"]
 [connection signal="matchStrikerInventory" from="match striker" to="match striker inventory" method="_on_match_striker_match_striker_inventory"]
 [connection signal="matchInventory" from="match" to="match inventory" method="_on_match_match_inventory"]
+[connection signal="body_entered" from="hiding locations" to="hiding locations" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations" to="hiding locations" method="_on_body_exited"]

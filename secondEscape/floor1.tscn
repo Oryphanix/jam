@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=4 uid="uid://brrgwk3rnusam"]
+[gd_scene load_steps=9 format=4 uid="uid://brrgwk3rnusam"]
 
 [ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="1_y8klx"]
 [ext_resource type="PackedScene" uid="uid://2w4xin683x4e" path="res://items/battery.tscn" id="2_wt3v8"]
 [ext_resource type="Script" path="res://items/itemscripts/battery script.gd" id="3_7kj54"]
 [ext_resource type="Script" path="res://items/itemscripts/battery_inventory.gd" id="4_fgesj"]
+[ext_resource type="Script" path="res://firstEscape/hiding_locations.gd" id="5_03g2f"]
+[ext_resource type="Texture2D" uid="uid://b6dn1r1mg1vn7" path="res://Screenshot 2024-10-23 210907.png" id="6_kpflt"]
+[ext_resource type="Script" path="res://firstEscape/hide.gd" id="7_q4u40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4okww"]
+size = Vector2(96.5, 48.75)
 
 [node name="ground floor" type="Node2D"]
 
@@ -23,4 +29,19 @@ script = ExtResource("3_7kj54")
 position = Vector2(8, -222)
 script = ExtResource("4_fgesj")
 
+[node name="hiding locations" type="Area2D" parent="."]
+script = ExtResource("5_03g2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hiding locations"]
+position = Vector2(800, -26)
+shape = SubResource("RectangleShape2D_4okww")
+
+[node name="hide" type="Sprite2D" parent="."]
+position = Vector2(800, -51)
+scale = Vector2(0.296243, 0.296243)
+texture = ExtResource("6_kpflt")
+script = ExtResource("7_q4u40")
+
 [connection signal="batteryInventory" from="battery" to="battery inventory" method="_on_battery_battery_inventory"]
+[connection signal="body_entered" from="hiding locations" to="hiding locations" method="_on_body_entered"]
+[connection signal="body_exited" from="hiding locations" to="hiding locations" method="_on_body_exited"]
