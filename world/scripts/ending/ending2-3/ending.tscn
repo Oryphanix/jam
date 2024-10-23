@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjd73rpjqptdw"]
 
-[ext_resource type="Script" path="res://world/scripts/ending/ending1-2/endingAttatchment.gd" id="1_dsceo"]
+[ext_resource type="Script" path="res://world/scripts/ending/ending2-3/endingAttatchment.gd" id="1_2rwqf"]
 [ext_resource type="Texture2D" uid="uid://hmmtnrw44xvt" path="res://transition slide.png" id="2_8curp"]
 
 [node name="Ending" type="Node2D"]
-script = ExtResource("1_dsceo")
+script = ExtResource("1_2rwqf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576.072, 417.25)

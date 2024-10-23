@@ -3,8 +3,13 @@ extends Node
 var delayTimer: Timer
 
 func _ready():
+	wait()
+	#RESET
 	GlobalSceneData.enemyStateName = ""
 	GlobalSceneData.playerSanity = null
+	GlobalSceneData.W0playerPosition = null
+	GlobalSceneData.W0enemyPosition = null
+	GlobalSceneData.W0stairPos = null
 	#World1
 	GlobalSceneData.W1playerPosition = null
 	GlobalSceneData.W1enemyPosition = null
@@ -17,9 +22,14 @@ func _ready():
 	GlobalSceneData.W3playerPosition = null
 	GlobalSceneData.W3enemyPosition = null
 	GlobalSceneData.W3stairPos = null
-
-	pass
-	
+	Global.enemyPosition = Vector2.ZERO
+	Global.enemySpeed =  0
+	Global.playerPosition = Vector2.ZERO
+	Global.playerFace = Vector2.ZERO
+	Global.playerSpeed =  0
+	Global.sanity = 0
+	Global.maxSanity = 0
+	Global.isPlayerhiding = false
 	
 	
 	

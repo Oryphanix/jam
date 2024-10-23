@@ -32,5 +32,5 @@ func wait():
 	
 
 func on_timer_finished():
-	get_tree().change_scene_to_file("res://secondEscape/floor1")
+	get_tree().change_scene_to_file("res://thirdEscape/floor1")
 	
