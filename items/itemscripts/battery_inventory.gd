@@ -11,3 +11,7 @@ func _on_battery_battery_inventory():
 	#revealing it when picked up
 	argument = false
 #stopping it from hiding again
+
+
+func _on_speaker_escape_2() -> void:
+	modulate.a8 = 0

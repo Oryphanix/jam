@@ -15,7 +15,7 @@ func _on_rope_rope_inventory() -> void:
 #stopping it from hiding again
 
 
-func _on_open_window_escape_through_window() -> void:
+
+func _on_open_window_escape_1() -> void:
 	modulate.a8 = 0
 	argument = true
-	

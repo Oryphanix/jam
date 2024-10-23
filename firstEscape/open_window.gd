@@ -1,5 +1,5 @@
 extends Area2D
-signal escapeThroughWindow
+signal escape1
 #creating a signal that can be emitted.
 func _on_body_entered(body):
 	#signal generation
@@ -10,7 +10,7 @@ func _on_body_entered(body):
 	#checking for a collision
 		modulate.a8 = 0
 		#making the opacity of the object 0, and thus hiding it.
-		emit_signal ("escapeThroughWindow")
+		emit_signal ("escape1")
 		#emitting the signal when picked up by the player
 
 
