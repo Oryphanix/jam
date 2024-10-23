@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cuc5it3jnnefg"]
+[gd_scene load_steps=9 format=4 uid="uid://divt5ttrtlf5n"]
 
 [ext_resource type="Script" path="res://world/scripts/firstEscape/floor2Code.gd" id="1_d7g7v"]
 [ext_resource type="TileSet" uid="uid://cqlm5lwpqv7fm" path="res://world/placeholder.tres" id="2_xmvr8"]

@@ -21,7 +21,9 @@ func Enter():
 	while !(randomPos.y < 0 and randomPos.y > -153):
 		randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition
 	en.global_position = randomPos
-	$AnimatedSprite2D.
+	$AnimatedSprite2D.play("lurk")  # Play the "idle" animation
+	$AnimatedSprite2D.frame = 0  # Set it to the first frame
+	$AnimatedSprite2D.stop() 
 	en.show()
 	print("IF IS CLIPPING UP, REPLACE 16 WITH 16-MONSTER HEIGHT")
 	
