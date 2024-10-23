@@ -16,3 +16,7 @@ func _on_wire_match_wire_inventory() -> void:
 	#revealing it when it is picked up
 	argument = false
 	#stopping it from hiding again
+
+
+func _on_speaker_escape_2() -> void:
+	modulate.a8 = 0
