@@ -12,3 +12,8 @@ func _on_fuel_fuel_inventory():
 	#revealing it when picked up
 	argument = false
 #stopping it from hiding again
+
+
+func _on_fire_location_fire_area_reached() -> void:
+	modulate.a8 = 0
+	
