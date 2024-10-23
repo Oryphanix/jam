@@ -3,6 +3,14 @@ extends Node
 var enemyStateName: String
 var enemyState: State
 var playerSanity = null
+
+#World0
+
+var W0playerPosition = null
+var W0enemyPosition = null
+var W0stairPos = null
+
+
 #World1
 var W1playerPosition = null
 var W1enemyPosition = null

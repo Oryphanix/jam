@@ -13,11 +13,14 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
+		var NSP = "res://firstEscape/floor"
 		var CSF = get_tree().current_scene.scene_file_path
-		var NLN = CSF.to_int() - 1
-		var NLP = "res://secondEscape/floor" + str(NLN) + ".tscn"
-		GlobalSceneData.W3playerPosition = Global.playerPosition
-		GlobalSceneData.W3enemyPosition = Global.enemyPosition
-		GlobalSceneData.W3stairPos = self.global_position
+		var NLN = CSF.to_int() + 1
+		var NLP = NSP + str(NLN) + ".tscn"
+		GlobalSceneData.W2playerPosition = Global.playerPosition
+		GlobalSceneData.W2enemyPosition = Global.enemyPosition
+		GlobalSceneData.W2stairPos = Vector2(1725,-55)
 		GlobalSceneData.playerSanity = Global.sanity
 		get_tree().change_scene_to_file(NLP)
+	else:
+		print(body.name)

@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		var CSF = get_tree().current_scene.scene_file_path
 		var NLN = CSF.to_int() - 1
-		var NLP = "res://secondEscape/floor" + str(NLN) + ".tscn"
+		var NLP = "res://firstEscape/floor" + str(NLN) + ".tscn"
 		GlobalSceneData.W3playerPosition = Global.playerPosition
 		GlobalSceneData.W3enemyPosition = Global.enemyPosition
 		GlobalSceneData.W3stairPos = self.global_position
