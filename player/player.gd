@@ -64,3 +64,6 @@ func apply_friction(amount) -> void:
 		velocity -= velocity.normalized() * amount
 	else:
 		velocity = Vector2.ZERO
+		
+func _process(_delta: float) -> void:
+	$Camera2D.make_current()
