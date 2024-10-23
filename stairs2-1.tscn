@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://vtr0sr4y0qll"]
+
+[ext_resource type="Script" path="res://world/scripts/secondEscape/decendScene2-1.gd" id="1_ryale"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi2rv"]
+size = Vector2(5, 84)
+
+[node name="Stairs2-1" type="Area2D"]
+script = ExtResource("1_ryale")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yi2rv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

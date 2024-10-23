@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpakxo81q0su"]
+
+[ext_resource type="Script" path="res://monster/enemy.gd" id="1_rg1we"]
+[ext_resource type="Texture2D" uid="uid://cj8dnp2v42tj7" path="res://monster/Screenshot 2024-08-12 170945.png" id="2_1t4wk"]
+[ext_resource type="Script" path="res://monster/States/state_machine.gd" id="3_tgi4v"]
+[ext_resource type="Script" path="res://monster/States/stalking.gd" id="4_6qnga"]
+[ext_resource type="Script" path="res://monster/States/preLurk.gd" id="4_gik7t"]
+[ext_resource type="Script" path="res://monster/States/lurking.gd" id="4_s5aqr"]
+[ext_resource type="Script" path="res://monster/States/travelling.gd" id="5_wli7b"]
+[ext_resource type="Script" path="res://monster/States/chasing.gd" id="6_jbkc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu6n3"]
+size = Vector2(26, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tx3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1t4wk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3j2d4"]
+size = Vector2(1, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqrhf"]
+size = Vector2(2, 49)
+
+[node name="Node" type="Node2D"]
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rg1we")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(1, -31)
+shape = SubResource("RectangleShape2D_fu6n3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+position = Vector2(0.937501, -31)
+scale = Vector2(0.119292, 0.275224)
+sprite_frames = SubResource("SpriteFrames_0tx3f")
+
+[node name="Camera2D" type="Camera2D" parent="enemy"]
+
+[node name="StateMachine" type="Node" parent="enemy" node_paths=PackedStringArray("initialState", "enemy")]
+script = ExtResource("3_tgi4v")
+initialState = NodePath("Stalking")
+enemy = NodePath("..")
+
+[node name="preLurking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]
+script = ExtResource("4_gik7t")
+en = NodePath("../..")
+
+[node name="Lurking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]
+script = ExtResource("4_s5aqr")
+en = NodePath("../..")
+
+[node name="Travelling" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]
+script = ExtResource("5_wli7b")
+en = NodePath("../..")
+
+[node name="Stalking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_6qnga")
+enemy = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="enemy/StateMachine/Stalking"]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+
+[node name="Chasing" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_jbkc5")
+enemy = NodePath("../..")
+
+[node name="leftdetection" type="Area2D" parent="enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/leftdetection"]
+position = Vector2(-12.5, -32.5)
+shape = SubResource("RectangleShape2D_3j2d4")
+
+[node name="rightdetector" type="Area2D" parent="enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/rightdetector"]
+position = Vector2(14, -31.5)
+shape = SubResource("RectangleShape2D_sqrhf")
+
+[connection signal="timeout" from="enemy/StateMachine/Stalking/Timer" to="enemy/StateMachine/Stalking" method="_on_timer_timeout"]
+[connection signal="body_entered" from="enemy/leftdetection" to="enemy/StateMachine/Stalking" method="_on_body_left_entered"]
+[connection signal="body_entered" from="enemy/rightdetector" to="enemy/StateMachine/Stalking" method="_on_body_right_entered"]
