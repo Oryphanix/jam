@@ -21,6 +21,7 @@ func Enter():
 	while !(randomPos.y < 0 and randomPos.y > -153):
 		randomPos = (randCirlePos()*Global.playerFOV)+Global.playerPosition
 	en.global_position = randomPos
+	$AnimatedSprite2D.
 	en.show()
 	print("IF IS CLIPPING UP, REPLACE 16 WITH 16-MONSTER HEIGHT")
 	

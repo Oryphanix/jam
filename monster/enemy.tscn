@@ -585,6 +585,7 @@ en = NodePath("../..")
 [node name="Lurking" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]
 script = ExtResource("4_s5aqr")
 en = NodePath("../..")
+sanityLoss = null
 
 [node name="Travelling" type="Node" parent="enemy/StateMachine" node_paths=PackedStringArray("en")]
 script = ExtResource("5_wli7b")
