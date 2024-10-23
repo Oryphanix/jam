@@ -12,7 +12,7 @@ var argumentNarwhal = false
 @export var narwhalExponential = 1
 @export var time = 0.0
 @export var narwhalIncrease = 20.0
-
+const JUMP_VELOCITY = -600.0
 func _ready() -> void:
 	if GlobalSceneData.playerSanity == null:
 		Global.maxSanity = sanity
@@ -70,5 +70,6 @@ func _process(delta):
 			sanity +- narwhalIncrease
 	if sanity < 0:
 		pass
+
 			#if the character is holding the narwhal and running, sanity decreases by an exponential of 1.2, but increases by an exponential of 0.85
 	Global.sanity = sanity
