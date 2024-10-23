@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhvvyig3w81we"]
+
+[ext_resource type="Script" path="res://scenes/endings/ending1-2/ending12.gd" id="1_qmsw7"]
+
+[node name="Ending1-2" type="Node2D"]
+script = ExtResource("1_qmsw7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
