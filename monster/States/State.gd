@@ -1,8 +1,7 @@
 extends Node
 class_name State
 
-#Signal to Handle state transition
- 
+#Baic layout for tate cla 
 
 func Enter():
 	pass
