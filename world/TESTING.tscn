@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://btxtqfvpwce6r"]
+
+[ext_resource type="Texture2D" uid="uid://foc3qaqjmdm6" path="res://icon.svg" id="1_kwimv"]
+[ext_resource type="PackedScene" uid="uid://dyyvcvbomxviu" path="res://player/player.tscn" id="2_70miy"]
+[ext_resource type="PackedScene" uid="uid://bpakxo81q0su" path="res://monster/enemy.tscn" id="3_vfbsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j15ma"]
+size = Vector2(1547, 20)
+
+[node name="Testing" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(881, 170)
+shape = SubResource("RectangleShape2D_j15ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(836.5, 167.5)
+scale = Vector2(11.0703, 0.148438)
+texture = ExtResource("1_kwimv")
+
+[node name="Node2D" parent="." instance=ExtResource("2_70miy")]
+position = Vector2(161, 92)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="Node" parent="." instance=ExtResource("3_vfbsp")]
+position = Vector2(264, 87)
